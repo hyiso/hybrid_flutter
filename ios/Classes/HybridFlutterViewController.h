@@ -1,6 +1,6 @@
 #import <Flutter/Flutter.h>
 
-@interface FlutterHybridViewController : FlutterViewController
+@interface HybridFlutterViewController : FlutterViewController
 
 - (BOOL)shouldUseNewEngine;
 

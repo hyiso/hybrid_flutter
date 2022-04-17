@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
 #import <Flutter/Flutter.h>
-#import "FlutterHybridNavigator.h"
+#import "HybridFlutterNavigator.h"
 
-@interface FlutterHybridManager : NSObject
+@interface HybridFlutterManager : NSObject
 
-@property(nonatomic, strong) id<FlutterHybridNavigator> navigator;
+@property(nonatomic, strong) id<HybridFlutterNavigator> navigator;
 
 +(instancetype)sharedInstance;
 

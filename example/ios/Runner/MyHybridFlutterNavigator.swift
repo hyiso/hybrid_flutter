@@ -1,7 +1,7 @@
 import Foundation
 import hybrid_flutter
 
-class MyFlutterHybridNavigator : NSObject, FlutterHybridNavigator {
+class MyHybridFlutterNavigator : NSObject, HybridFlutterNavigator {
   func pushRoute(_ route: String?, arguments: Any?, viewController flutterViewController: FlutterViewController?) {
     var useNewEngine = false
     if (arguments != nil && arguments is [String:String]) {

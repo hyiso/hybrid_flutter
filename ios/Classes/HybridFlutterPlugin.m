@@ -1,7 +1,7 @@
-#import "FlutterHybridPlugin.h"
-#import "FlutterHybridManager.h"
+#import "HybridFlutterPlugin.h"
+#import "HybridFlutterManager.h"
 
-@interface FlutterHybridPlugin()
+@interface HybridFlutterPlugin()
 
 @property(nonatomic, strong) FlutterMethodChannel *navigationChannel;
 
@@ -9,9 +9,9 @@
 
 @end
 
-@implementation FlutterHybridPlugin
+@implementation HybridFlutterPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  FlutterHybridPlugin* instance = [[FlutterHybridPlugin alloc] init];
+  HybridFlutterPlugin* instance = [[HybridFlutterPlugin alloc] init];
   instance.lifecycleChannel = [FlutterBasicMessageChannel messageChannelWithName:@"hybrid/lifecycle"
                                                                  binaryMessenger:registrar.messenger
                                                                            codec:[FlutterStringCodec sharedInstance]];
@@ -27,30 +27,30 @@
 }
 
 + (instancetype)fromEngine:(FlutterEngine *)engine {
-  NSObject *plugin = [engine valuePublishedByPlugin: @"FlutterHybridPlugin"];
-  if ([plugin isKindOfClass: [FlutterHybridPlugin class]]) {
-    return (FlutterHybridPlugin *) plugin;
+  NSObject *plugin = [engine valuePublishedByPlugin: @"HybridFlutterPlugin"];
+  if ([plugin isKindOfClass: [HybridFlutterPlugin class]]) {
+    return (HybridFlutterPlugin *) plugin;
   }
   return nil;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if (![FlutterHybridManager sharedInstance].navigator) {
+  if (![HybridFlutterManager sharedInstance].navigator) {
     result([FlutterError errorWithCode:@"no_navigator" message:@"navigator not provided" details:nil]);
     return;
   }
   if ([@"pop" isEqualToString:call.method]) {
     NSNumber *routeId = [call.arguments objectForKey:@"routeId"];
-    FlutterViewController *viewController = [[FlutterHybridManager sharedInstance] getFlutterViewControllerWithRouteId:routeId];
+    FlutterViewController *viewController = [[HybridFlutterManager sharedInstance] getFlutterViewControllerWithRouteId:routeId];
     if (viewController) {
-      [[FlutterHybridManager sharedInstance].navigator pop:viewController
+      [[HybridFlutterManager sharedInstance].navigator pop:viewController
                                                     result:[call.arguments objectForKey:@"result"]];
     }
   } else if ([@"push" isEqualToString:call.method]) {
     NSNumber *routeId = [call.arguments objectForKey:@"routeId"];
-    FlutterViewController *viewController = [[FlutterHybridManager sharedInstance] getFlutterViewControllerWithRouteId:routeId];
+    FlutterViewController *viewController = [[HybridFlutterManager sharedInstance] getFlutterViewControllerWithRouteId:routeId];
     if (viewController) {
-      [[FlutterHybridManager sharedInstance].navigator pushRoute:[call.arguments objectForKey:@"route"]
+      [[HybridFlutterManager sharedInstance].navigator pushRoute:[call.arguments objectForKey:@"route"]
                                                        arguments:[call.arguments objectForKey:@"arguments"]
                                                   viewController:viewController];
     }

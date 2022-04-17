@@ -29,9 +29,9 @@ flutter:
     platforms:
       android:
         package: io.hybrid.flutter.plugins.hybrid_flutter
-        pluginClass: FlutterHybridPlugin
+        pluginClass: HybridFlutterPlugin
       ios:
-        pluginClass: FlutterHybridPlugin
+        pluginClass: HybridFlutterPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

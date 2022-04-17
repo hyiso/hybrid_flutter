@@ -104,10 +104,10 @@ class _MyAppState extends State<MyApp> {
 ```
 
 #### In Android
-First, implement `IFlutterHybridNavigator` interface
+First, implement `IHybridFlutterNavigator` interface
 
 ``` kotlin
-object FlutterHybridNavigator : IFlutterHybridNavigator {
+object HybridFlutterNavigator : IHybridFlutterNavigator {
   override fun push(route: String, arguments: HashMap<String, String>?, context: Context) {
     val intent = Intent(context, MainFragmentActivity::class.java)
     intent.putExtra(MainFragmentActivity.KEY_ROUTE, route)
@@ -123,16 +123,16 @@ object FlutterHybridNavigator : IFlutterHybridNavigator {
 }
 ```
 
-Then, set the navigator to `FlutterHybridManager` before enter `FlutterEngine`
+Then, set the navigator to `HybridFlutterManager` before enter `FlutterEngine`
 
 ``` kotlin
-FlutterHybridManager.navigator = FlutterHybridNavigator
+HybridFlutterManager.navigator = HybridFlutterNavigator
 ```
 
-Finally, use `FlutterHybridFragment` instead of `FlutterFragment` in `FragmentActivity`.
+Finally, use `HybridFlutterFragment` instead of `FlutterFragment` in `FragmentActivity`.
 
 ``` kotlin
-val flutterFragment = FlutterFragment.NewEngineFragmentBuilder(FlutterHybridFragment::class.java)
+val flutterFragment = FlutterFragment.NewEngineFragmentBuilder(HybridFlutterFragment::class.java)
     .initialRoute(route)
     .build()
 supportFragmentManager
@@ -142,10 +142,10 @@ supportFragmentManager
 ```
 
 #### In iOS
-First, implement `FlutterHybridNavigator` protocol.
+First, implement `HybridFlutterNavigator` protocol.
 
 ``` swift
-class MyFlutterHybridNavigator : NSObject, FlutterHybridNavigator {
+class MyHybridFlutterNavigator : NSObject, HybridFlutterNavigator {
   func pushRoute(_ route: String?, arguments: Any?, viewController flutterViewController: FlutterViewController?) {
     let vc = MyFlutterViewController.init(route: route, parameters: arguments as? [String:String], useNewEngine: false)
     flutterViewController?.navigationController?.pushViewController(vc, animated: true)
@@ -157,13 +157,13 @@ class MyFlutterHybridNavigator : NSObject, FlutterHybridNavigator {
 }
 ```
 
-Then, set the navigator to `FlutterHybridManager` before enter `FlutterEngine`.
+Then, set the navigator to `HybridFlutterManager` before enter `FlutterEngine`.
 
 ``` swift
-FlutterHybridManager.sharedInstance().navigator = MyFlutterHybridNavigator.init()
+HybridFlutterManager.sharedInstance().navigator = MyHybridFlutterNavigator.init()
 ```
 
-Finally, use `FlutterHybridViewController` instead of `FlutterViewController`.
+Finally, use `HybridFlutterViewController` instead of `FlutterViewController`.
 ``` swift
 let win = UIWindow.init(frame: UIScreen.main.bounds)
 let flutterViewController = MyFlutterViewController.init(route: "/home", parameters: nil, useNewEngine: false)

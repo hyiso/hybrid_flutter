@@ -12,7 +12,7 @@
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		75A5034FB80DEB81A1732361 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24BE85238B9A3AE7BC89124 /* Pods_Runner.framework */; };
 		7CCB21AB280B078C00F8EC7A /* MyFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCB21AA280B078C00F8EC7A /* MyFlutterViewController.swift */; };
-		7CCB21AD280B135400F8EC7A /* MyFlutterHybridNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCB21AC280B135400F8EC7A /* MyFlutterHybridNavigator.swift */; };
+		7CCB21AD280B135400F8EC7A /* MyHybridFlutterNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCB21AC280B135400F8EC7A /* MyHybridFlutterNavigator.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
@@ -41,7 +41,7 @@
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7CCB21AA280B078C00F8EC7A /* MyFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFlutterViewController.swift; sourceTree = "<group>"; };
-		7CCB21AC280B135400F8EC7A /* MyFlutterHybridNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFlutterHybridNavigator.swift; sourceTree = "<group>"; };
+		7CCB21AC280B135400F8EC7A /* MyHybridFlutterNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHybridFlutterNavigator.swift; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +117,7 @@
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 				7CCB21AA280B078C00F8EC7A /* MyFlutterViewController.swift */,
-				7CCB21AC280B135400F8EC7A /* MyFlutterHybridNavigator.swift */,
+				7CCB21AC280B135400F8EC7A /* MyHybridFlutterNavigator.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
-				7CCB21AD280B135400F8EC7A /* MyFlutterHybridNavigator.swift in Sources */,
+				7CCB21AD280B135400F8EC7A /* MyHybridFlutterNavigator.swift in Sources */,
 				7CCB21AB280B078C00F8EC7A /* MyFlutterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.hybrid.flutter.plugins.flutterHybridExample;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hybrid.flutter.plugins.HybridFlutterExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -499,7 +499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.hybrid.flutter.plugins.flutterHybridExample;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hybrid.flutter.plugins.HybridFlutterExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -522,7 +522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.hybrid.flutter.plugins.flutterHybridExample;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hybrid.flutter.plugins.HybridFlutterExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

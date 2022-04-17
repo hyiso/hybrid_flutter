@@ -1,8 +1,8 @@
-#import "FlutterHybridViewController.h"
-#import "FlutterHybridManager.h"
-#import "FlutterHybridPlugin.h"
+#import "HybridFlutterViewController.h"
+#import "HybridFlutterManager.h"
+#import "HybridFlutterPlugin.h"
 
-@interface FlutterHybridViewController ()
+@interface HybridFlutterViewController ()
 
 @property(nonatomic) int routeId;
 
@@ -10,7 +10,7 @@
 
 @end
 
-@implementation FlutterHybridViewController
+@implementation HybridFlutterViewController
 
 - (instancetype)initWithProject:(nullable FlutterDartProject *)project
                    initialRoute:(NSString *)initialRoute
@@ -19,9 +19,9 @@
   FlutterEngine *engine;
   _initialRoute = initialRoute;
   if (self.shouldUseNewEngine) {
-    engine = [[FlutterHybridManager sharedInstance] spawnEngine:project];
+    engine = [[HybridFlutterManager sharedInstance] spawnEngine:project];
   } else {
-    engine = [[FlutterHybridManager sharedInstance] shareEngine:project];
+    engine = [[HybridFlutterManager sharedInstance] shareEngine:project];
   }
   return [super initWithEngine:engine nibName:nibName bundle:nibBundle];
 }
@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   if (_initialRoute && ![@"/" isEqualToString:_initialRoute]) {
-    _routeId = [[FlutterHybridManager sharedInstance] newRoute:_initialRoute flutterViewController:self];
+    _routeId = [[HybridFlutterManager sharedInstance] newRoute:_initialRoute flutterViewController:self];
   }
 }
 
@@ -75,16 +75,16 @@
   if (self.engine.viewController != self) {
     return;
   }
-  FlutterHybridPlugin *plugin = [FlutterHybridPlugin fromEngine:self.engine];
+  HybridFlutterPlugin *plugin = [HybridFlutterPlugin fromEngine:self.engine];
   if (plugin) {
     [plugin sendLifecycleMessage:state];
   }
 }
 
 - (void)dealloc {
-  [[FlutterHybridManager sharedInstance] removeRoute:@(self.routeId)];
+  [[HybridFlutterManager sharedInstance] removeRoute:@(self.routeId)];
   if (!self.shouldUseNewEngine) {
-    [[FlutterHybridManager sharedInstance] releaseShareEngine];
+    [[HybridFlutterManager sharedInstance] releaseShareEngine];
   }
 }
 

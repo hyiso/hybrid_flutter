@@ -1,7 +1,7 @@
 import Foundation
 import hybrid_flutter
 
-class MyFlutterViewController : FlutterHybridViewController {
+class MyFlutterViewController : HybridFlutterViewController {
   
   override func shouldUseNewEngine() -> Bool {
     return useNewEngine
@@ -16,7 +16,7 @@ class MyFlutterViewController : FlutterHybridViewController {
     let initialRoute = MyFlutterViewController.buildInitialRoute(route: route, parameters: parameters, useNewEngine: useNewEngine)
     self.useNewEngine = useNewEngine
     super.init(project: nil, initialRoute: initialRoute, nibName: nil, bundle: nil)
-    if (!self.engine!.hasPlugin("FlutterHybridPlugin")) {
+    if (!self.engine!.hasPlugin("HybridFlutterPlugin")) {
       GeneratedPluginRegistrant.register(with: self.engine!)
     }
   }

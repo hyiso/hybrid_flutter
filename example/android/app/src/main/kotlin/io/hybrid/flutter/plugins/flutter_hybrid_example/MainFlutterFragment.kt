@@ -3,9 +3,9 @@ package io.hybrid.flutter.plugins.hybrid_flutter_example
 import android.net.Uri
 import android.util.Log
 import io.flutter.embedding.android.FlutterFragment
-import io.hybrid.flutter.plugins.hybrid_flutter.FlutterHybridFragment
+import io.hybrid.flutter.plugins.hybrid_flutter.HybridFlutterFragment
 
-class MainFlutterFragment : FlutterHybridFragment() {
+class MainFlutterFragment : HybridFlutterFragment() {
 
   var useNewEngine:Boolean = false
 

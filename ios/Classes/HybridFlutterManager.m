@@ -1,8 +1,8 @@
 #import <Flutter/Flutter.h>
-#import "FlutterHybridManager.h"
-#import "FlutterHybridPlugin.h"
+#import "HybridFlutterManager.h"
+#import "HybridFlutterPlugin.h"
 
-@interface FlutterHybridManager()
+@interface HybridFlutterManager()
 
 @property(nonatomic) int shareCount;
 
@@ -23,10 +23,10 @@
 
 NSString* const FlutterEngineWillDealloc = @"FlutterEngineWillDealloc";
 
-@implementation FlutterHybridManager
+@implementation HybridFlutterManager
 
 + (instancetype)sharedInstance {
-  static FlutterHybridManager *_instance = nil;
+  static HybridFlutterManager *_instance = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     _instance = [self.class new];
@@ -133,7 +133,7 @@ NSString* const FlutterEngineWillDealloc = @"FlutterEngineWillDealloc";
 
 - (int)newRoute:(NSString *)route flutterViewController:(FlutterViewController *)flutterViewController {
   int routeId = ++_uniqueRouteId;
-  [[FlutterHybridPlugin fromEngine:flutterViewController.engine] newRoute:route routeId:@(routeId)];
+  [[HybridFlutterPlugin fromEngine:flutterViewController.engine] newRoute:route routeId:@(routeId)];
   [_viewControllers setObject:[NSValue valueWithNonretainedObject: flutterViewController] forKey:@(routeId)];
   return routeId;
 }
@@ -145,7 +145,7 @@ NSString* const FlutterEngineWillDealloc = @"FlutterEngineWillDealloc";
 
 - (void)removeRoute:(NSNumber *)routeId {
   FlutterViewController *flutterViewController = [self getFlutterViewControllerWithRouteId:routeId];
-  [[FlutterHybridPlugin fromEngine:flutterViewController.engine] removeRoute:routeId];
+  [[HybridFlutterPlugin fromEngine:flutterViewController.engine] removeRoute:routeId];
   [_viewControllers removeObjectForKey:routeId];
 }
 

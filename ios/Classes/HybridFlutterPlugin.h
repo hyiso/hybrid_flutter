@@ -1,6 +1,6 @@
 #import <Flutter/Flutter.h>
 
-@interface FlutterHybridPlugin : NSObject<FlutterPlugin>
+@interface HybridFlutterPlugin : NSObject<FlutterPlugin>
 
 +(instancetype)fromEngine:(FlutterEngine *)engine;
 

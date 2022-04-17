@@ -3,16 +3,15 @@ package io.hybrid.flutter.plugins.hybrid_flutter
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.engine.FlutterEngine
 
 
-open class FlutterHybridFragment : FlutterFragment() {
+open class HybridFlutterFragment : FlutterFragment() {
 
   private var routeId:Int = -1
-  private lateinit var delegate: FlutterHybridFragmentDelegate
+  private lateinit var delegate: HybridFlutterFragmentDelegate
 
   open fun shouldUseNewEngine(): Boolean {
     return false
@@ -24,7 +23,7 @@ open class FlutterHybridFragment : FlutterFragment() {
 
   override fun onAttach(context: Context) {
     super.onAttach(context)
-    delegate = FlutterHybridFragmentDelegate(this)
+    delegate = HybridFlutterFragmentDelegate(this)
     if (!shouldUseNewEngine()) {
       delegate.onAttach(context)
     }
@@ -33,7 +32,7 @@ open class FlutterHybridFragment : FlutterFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     delegate.onViewCreated(view, savedInstanceState)
-    routeId = FlutterHybridManager.newRoute(initialRoute, this)
+    routeId = HybridFlutterManager.newRoute(initialRoute, this)
   }
 
   private fun attachToFlutterEngine() {
@@ -54,12 +53,12 @@ open class FlutterHybridFragment : FlutterFragment() {
 
   override fun onResume() {
     super.onResume()
-    updateHybridAppLifecycleState(FlutterHybridPlugin.LIFECYCLE_RESUMED)
+    updateHybridAppLifecycleState(HybridFlutterPlugin.LIFECYCLE_RESUMED)
   }
 
   override fun onPause() {
     super.onPause()
-    updateHybridAppLifecycleState(FlutterHybridPlugin.LIFECYCLE_INACTIVE)
+    updateHybridAppLifecycleState(HybridFlutterPlugin.LIFECYCLE_INACTIVE)
     // If sharing FlutterEngine with multi FlutterFragment(s)
     // When leaving this Activity and FlutterFragment
     // and under stack Activity also contains FlutterFragment
@@ -71,14 +70,14 @@ open class FlutterHybridFragment : FlutterFragment() {
     if (activity != null && activity.isFinishing) {
       if (shouldSnapshotForLeaving()) {
         delegate.flutterView?.convertToImageView()
-        FlutterHybridManager.removeRoute(routeId)
+        HybridFlutterManager.removeRoute(routeId)
       }
     }
   }
 
   override fun onStop() {
     super.onStop()
-    updateHybridAppLifecycleState(FlutterHybridPlugin.LIFECYCLE_PAUSED)
+    updateHybridAppLifecycleState(HybridFlutterPlugin.LIFECYCLE_PAUSED)
     // super.onStop will send AppLifecycleState.paused to engine shell
     // which intercepted this message and then stop animator
     // See https://github.com/flutter/engine/blob/75bef9f6c8ac2ed4e1e04cdfcd88b177d9f1850d/shell/common/engine.cc#L346
@@ -86,7 +85,7 @@ open class FlutterHybridFragment : FlutterFragment() {
     // When FlutterEngine is still used by other FlutterFragment,
     // We need to fix AppLifecycleState by LifecycleChannel
     if (!stillAttachedForEvent("onStop")) {
-      FlutterHybridManager.fixSharedEngineLifecycle()
+      HybridFlutterManager.fixSharedEngineLifecycle()
     }
   }
 
@@ -97,8 +96,8 @@ open class FlutterHybridFragment : FlutterFragment() {
     // super.onDetach will release FlutterEngine
     // If we need to do something with FlutterEngine,
     // calling it before super.onDetach
-    FlutterHybridManager.removeRoute(routeId)
-    updateHybridAppLifecycleState(FlutterHybridPlugin.LIFECYCLE_DETACHED)
+    HybridFlutterManager.removeRoute(routeId)
+    updateHybridAppLifecycleState(HybridFlutterPlugin.LIFECYCLE_DETACHED)
     super.onDetach()
     // super.onStop will send AppLifecycleState.detached to engine shell
     // which intercepted this message and then stop animator
@@ -107,10 +106,10 @@ open class FlutterHybridFragment : FlutterFragment() {
     // When FlutterEngine is still used by other FlutterFragment,
     // We need to fix AppLifecycleState by LifecycleChannel
     if (!stillAttachedForEvent("onDetach")) {
-      FlutterHybridManager.fixSharedEngineLifecycle()
+      HybridFlutterManager.fixSharedEngineLifecycle()
     }
     if (!shouldUseNewEngine()) {
-      FlutterHybridManager.releaseSharedEngine()
+      HybridFlutterManager.releaseSharedEngine()
     }
   }
 
@@ -134,7 +133,7 @@ open class FlutterHybridFragment : FlutterFragment() {
 
   private fun updateHybridAppLifecycleState(state: String) {
     if (stillAttachedForEvent(state)) {
-      FlutterHybridPlugin.fromEngine(flutterEngine)?.sendLifecycleMessage(state)
+      HybridFlutterPlugin.fromEngine(flutterEngine)?.sendLifecycleMessage(state)
     }
   }
 
@@ -148,7 +147,7 @@ open class FlutterHybridFragment : FlutterFragment() {
 
   override fun provideFlutterEngine(context: Context): FlutterEngine? {
     return if (shouldUseNewEngine()) {
-      FlutterHybridManager.spawnFlutterEngine(context)
-    } else FlutterHybridManager.shareFlutterEngine(context)
+      HybridFlutterManager.spawnFlutterEngine(context)
+    } else HybridFlutterManager.shareFlutterEngine(context)
   }
 }

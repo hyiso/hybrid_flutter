@@ -15,7 +15,7 @@ import hybrid_flutter
     win.rootViewController = navigationController
     self.window = win
     self.window.makeKeyAndVisible()
-    FlutterHybridManager.sharedInstance().navigator = MyFlutterHybridNavigator.init()
+    HybridFlutterManager.sharedInstance().navigator = MyHybridFlutterNavigator.init()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

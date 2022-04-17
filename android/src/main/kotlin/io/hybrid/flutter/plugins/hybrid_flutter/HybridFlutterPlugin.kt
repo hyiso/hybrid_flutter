@@ -10,8 +10,8 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.StringCodec
 
 
-/** FlutterHybridPlugin  */
-class FlutterHybridPlugin : FlutterPlugin {
+/** HybridFlutterPlugin  */
+class HybridFlutterPlugin : FlutterPlugin {
 
   private var lifecycleChannel: BasicMessageChannel<String>? = null
   private var navigationChannel: MethodChannel? = null
@@ -21,12 +21,12 @@ class FlutterHybridPlugin : FlutterPlugin {
     const val LIFECYCLE_INACTIVE = "HybridAppLifecycleState.inactive"
     const val LIFECYCLE_PAUSED = "HybridAppLifecycleState.paused"
     const val LIFECYCLE_DETACHED = "HybridAppLifecycleState.detached"
-    private const val TAG = "FlutterHybridPlugin"
+    private const val TAG = "HybridFlutterPlugin"
 
-    fun fromEngine(engine: FlutterEngine?): FlutterHybridPlugin? {
-      if (engine != null && engine.plugins.has(FlutterHybridPlugin::class.java)) {
-        val plugin = engine.plugins[FlutterHybridPlugin::class.java]
-        if (plugin is FlutterHybridPlugin) {
+    fun fromEngine(engine: FlutterEngine?): HybridFlutterPlugin? {
+      if (engine != null && engine.plugins.has(HybridFlutterPlugin::class.java)) {
+        val plugin = engine.plugins[HybridFlutterPlugin::class.java]
+        if (plugin is HybridFlutterPlugin) {
           return plugin
         }
       }
@@ -38,7 +38,7 @@ class FlutterHybridPlugin : FlutterPlugin {
     lifecycleChannel = BasicMessageChannel(binding.binaryMessenger, "hybrid/lifecycle", StringCodec.INSTANCE)
     navigationChannel = MethodChannel(binding.binaryMessenger, "hybrid/navigation")
     navigationChannel!!.setMethodCallHandler(MethodCallHandler { call, result ->
-      val navigator = FlutterHybridManager.navigator
+      val navigator = HybridFlutterManager.navigator
       if (navigator == null) {
         result.error("no_navigator", "navigator not provided", null)
         return@MethodCallHandler
@@ -46,7 +46,7 @@ class FlutterHybridPlugin : FlutterPlugin {
       if ("pop" == call.method) {
         val routeId = call.argument<Int>("routeId")
         val data = call.argument<Any>("result")
-        val flutterFragment = FlutterHybridManager.getFlutterFragment(routeId!!)
+        val flutterFragment = HybridFlutterManager.getFlutterFragment(routeId!!)
         if (flutterFragment != null && flutterFragment.activity != null) {
           navigator?.pop(flutterFragment.activity, data)
         }
@@ -54,7 +54,7 @@ class FlutterHybridPlugin : FlutterPlugin {
         val routeId = call.argument<Int>("routeId")
         val route = call.argument<String>("route")
         val arguments = call.argument<HashMap<String, String>>("arguments")
-        val flutterFragment = FlutterHybridManager.getFlutterFragment(routeId!!)
+        val flutterFragment = HybridFlutterManager.getFlutterFragment(routeId!!)
         if (flutterFragment != null) {
           navigator?.push(route!!, arguments, flutterFragment.context)
         }

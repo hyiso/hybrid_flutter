@@ -8,7 +8,7 @@ import io.flutter.embedding.engine.FlutterEngineGroup
 import java.lang.ref.WeakReference
 
 
-object FlutterHybridManager {
+object HybridFlutterManager {
   private var engineGroup: FlutterEngineGroup? = null
   private var rootEngine: FlutterEngine? = null
   private var spawnCount = 0
@@ -16,7 +16,7 @@ object FlutterHybridManager {
   private var uniqueRouteId = 0
   private val fragmentMap: MutableMap<Number, WeakReference<FlutterFragment?>>
 
-  var navigator: IFlutterHybridNavigator? = null
+  var navigator: IHybridFlutterNavigator? = null
 
   // Whether root engine is created for preload strategy.
   private var isPreloadRootEngine = false
@@ -104,7 +104,7 @@ object FlutterHybridManager {
   fun newRoute(route: String?, flutterFragment: FlutterFragment): Int {
     val routeId = ++uniqueRouteId
     if (route != null && route != "/") {
-      FlutterHybridPlugin.fromEngine(flutterFragment.flutterEngine)?.newRoute(route, routeId)
+      HybridFlutterPlugin.fromEngine(flutterFragment.flutterEngine)?.newRoute(route, routeId)
     }
     fragmentMap[routeId] = WeakReference(flutterFragment)
     return routeId
@@ -112,7 +112,7 @@ object FlutterHybridManager {
 
   fun removeRoute(routeId: Int) {
     val fragmentRef = fragmentMap.remove(routeId)
-    FlutterHybridPlugin.fromEngine(fragmentRef?.get()?.flutterEngine)?.removeRoute(routeId)
+    HybridFlutterPlugin.fromEngine(fragmentRef?.get()?.flutterEngine)?.removeRoute(routeId)
   }
 
   fun getFlutterFragment(routeId: Int): FlutterFragment? {

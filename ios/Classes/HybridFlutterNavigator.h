@@ -1,7 +1,7 @@
-#ifndef FlutterHybridNavigator_h
-#define FlutterHybridNavigator_h
+#ifndef HybridFlutterNavigator_h
+#define HybridFlutterNavigator_h
 
-@protocol FlutterHybridNavigator <NSObject>
+@protocol HybridFlutterNavigator <NSObject>
 
 -(void)pushRoute:(NSString * _Nullable)route
        arguments:(id _Nullable)arguments
@@ -11,4 +11,4 @@
 
 @end
 
-#endif /* FlutterHybridNavigator_h */
+#endif /* HybridFlutterNavigator_h */

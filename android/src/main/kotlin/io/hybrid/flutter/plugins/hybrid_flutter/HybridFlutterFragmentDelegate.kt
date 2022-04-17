@@ -10,7 +10,7 @@ import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.android.FlutterView
 import io.flutter.embedding.engine.FlutterEngine
 
-internal class FlutterHybridFragmentDelegate(fragment: FlutterFragment) : ExclusiveAppComponent<Activity?> {
+internal class HybridFlutterFragmentDelegate(fragment: FlutterFragment) : ExclusiveAppComponent<Activity?> {
 
   private var fragment: FlutterFragment?
   var flutterView: FlutterView? = null
