@@ -1,9 +1,9 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint flutter_hybrid.podspec` to validate before publishing.
+# Run `pod lib lint hybrid_flutter.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_hybrid'
+  s.name             = 'hybrid_flutter'
   s.version          = '0.1.0'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC

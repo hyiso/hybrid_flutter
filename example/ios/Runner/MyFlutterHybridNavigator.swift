@@ -1,5 +1,5 @@
 import Foundation
-import flutter_hybrid
+import hybrid_flutter
 
 class MyFlutterHybridNavigator : NSObject, FlutterHybridNavigator {
   func pushRoute(_ route: String?, arguments: Any?, viewController flutterViewController: FlutterViewController?) {

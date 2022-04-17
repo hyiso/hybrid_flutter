@@ -1,9 +1,9 @@
-package io.hybrid.flutter.plugins.flutter_hybrid_example
+package io.hybrid.flutter.plugins.hybrid_flutter_example
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import io.hybrid.flutter.plugins.flutter_hybrid.IFlutterHybridNavigator
+import io.hybrid.flutter.plugins.hybrid_flutter.IFlutterHybridNavigator
 
 object FlutterHybridNavigator : IFlutterHybridNavigator {
   override fun push(route: String, arguments: HashMap<String, String>?, context: Context) {

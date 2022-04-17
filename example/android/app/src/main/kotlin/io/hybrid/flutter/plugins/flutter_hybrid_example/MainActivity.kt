@@ -1,4 +1,4 @@
-package io.hybrid.flutter.plugins.flutter_hybrid_example
+package io.hybrid.flutter.plugins.hybrid_flutter_example
 
 import android.app.Activity
 import android.content.Intent

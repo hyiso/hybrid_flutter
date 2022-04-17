@@ -1,6 +1,6 @@
-# flutter_hybrid_example
+# hybrid_flutter_example
 
-Demonstrates how to use the flutter_hybrid plugin.
+Demonstrates how to use the hybrid_flutter plugin.
 
 ## Getting Started
 

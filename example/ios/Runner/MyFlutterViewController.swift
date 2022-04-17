@@ -1,5 +1,5 @@
 import Foundation
-import flutter_hybrid
+import hybrid_flutter
 
 class MyFlutterViewController : FlutterHybridViewController {
   

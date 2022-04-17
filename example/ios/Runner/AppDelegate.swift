@@ -1,6 +1,6 @@
 import UIKit
 import Flutter
-import flutter_hybrid
+import hybrid_flutter
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {

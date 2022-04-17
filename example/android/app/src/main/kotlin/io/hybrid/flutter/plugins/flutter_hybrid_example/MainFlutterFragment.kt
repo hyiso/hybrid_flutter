@@ -1,9 +1,9 @@
-package io.hybrid.flutter.plugins.flutter_hybrid_example
+package io.hybrid.flutter.plugins.hybrid_flutter_example
 
 import android.net.Uri
 import android.util.Log
 import io.flutter.embedding.android.FlutterFragment
-import io.hybrid.flutter.plugins.flutter_hybrid.FlutterHybridFragment
+import io.hybrid.flutter.plugins.hybrid_flutter.FlutterHybridFragment
 
 class MainFlutterFragment : FlutterHybridFragment() {
 

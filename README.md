@@ -1,4 +1,4 @@
-# flutter_hybrid
+## Introduction
 
 Flutter Hybrid stack Manager.
 
@@ -12,6 +12,13 @@ Also, you can switch to multi-engine mode.
 ## Getting Started
 
 More feature usage can be found in example.
+
+#### Add dependency
+In you `pubsepc.yaml`:
+
+```
+flutter_hybrid: ^0.1.0
+```
 
 #### In Dart
 Use `HybridApp` instead of `WidgetsApp` or `MaterialApp`/`CupertinoApp` in your `app.dart`.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hybrid/flutter_hybrid.dart';
+import 'package:hybrid_flutter/hybrid_flutter.dart';
 
 Map<String, WidgetBuilder> get pages => {
   '/': (ctx) => Container(),

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_hybrid/flutter_hybrid.dart';
+import 'package:hybrid_flutter/hybrid_flutter.dart';
 
 class MyRoute<T> extends CupertinoPageRoute<T> with HybridRouteMixin<T> {
   MyRoute({

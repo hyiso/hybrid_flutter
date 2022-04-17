@@ -1,4 +1,4 @@
-package io.hybrid.flutter.plugins.flutter_hybrid
+package io.hybrid.flutter.plugins.hybrid_flutter
 
 import io.flutter.Log
 import io.flutter.embedding.engine.FlutterEngine

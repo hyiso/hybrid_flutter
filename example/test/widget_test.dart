@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_hybrid_example/app.dart';
+import 'package:hybrid_flutter_example/app.dart';
 
 void main() {
   testWidgets('Verify Platform version', (WidgetTester tester) async {

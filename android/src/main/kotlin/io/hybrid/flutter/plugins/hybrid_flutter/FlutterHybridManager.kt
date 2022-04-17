@@ -1,4 +1,4 @@
-package io.hybrid.flutter.plugins.flutter_hybrid
+package io.hybrid.flutter.plugins.hybrid_flutter
 
 import android.content.Context
 import io.flutter.embedding.android.FlutterFragment

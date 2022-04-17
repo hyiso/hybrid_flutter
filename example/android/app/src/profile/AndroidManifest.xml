@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.hybrid.flutter.plugins.flutter_hybrid_example">
+    package="io.hybrid.flutter.plugins.hybrid_flutter_example">
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

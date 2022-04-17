@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "io.hybrid.flutter.plugins.flutter_hybrid_example"
+        applicationId "io.hybrid.flutter.plugins.hybrid_flutter_example"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
