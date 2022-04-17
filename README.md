@@ -4,7 +4,7 @@ Flutter Hybrid stack Manager.
 
 This plugin can be used in both Flutter Module and Flutter App.
 
-This plugin support sharing single `FlutterEngine` in `FlutterFragment`/`FlutterViewController`
+This plugin support sharing single `FlutterEngine` in `FlutterFragment` or `FlutterViewController`
 
 Also, you can switch to multi-engine mode.
 
@@ -17,11 +17,11 @@ More feature usage can be found in example.
 In you `pubsepc.yaml`:
 
 ```
-flutter_hybrid: ^0.1.0
+hybrid_flutter: ^0.1.0
 ```
 
 #### In Dart
-Use `HybridApp` instead of `WidgetsApp` or `MaterialApp`/`CupertinoApp` in your `app.dart`.
+Use `HybridApp` instead of `WidgetsApp`、`MaterialApp` or `CupertinoApp` in your `app.dart`.
 
 ``` dart
 Map<String, WidgetBuilder> get pages => {
