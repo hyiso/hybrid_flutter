@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Fix: Android PlatformPlugin destroy bug in share mode
+
 ## 0.1.0
 
 * Feature: Support Hybrid Stack Management and Navigation.

@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - hybrid_flutter (0.1.0):
+  - hybrid_flutter (0.1.1):
     - Flutter
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  hybrid_flutter: a1fe5acbfd9881d294a224a216d33d9c59372cbd
+  hybrid_flutter: 0cf46a6bd88fc830d1dd3208d46ee73a1851c6a7
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
