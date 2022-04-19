@@ -9,15 +9,16 @@ import io.flutter.embedding.android.ExclusiveAppComponent
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.android.FlutterView
 import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.platform.PlatformPlugin
 
 internal class HybridFlutterFragmentDelegate(fragment: FlutterFragment) : ExclusiveAppComponent<Activity?> {
 
   private var fragment: FlutterFragment?
-  var flutterView: FlutterView? = null
-    private set
   private var flutterEngine: FlutterEngine?
+  var flutterView: FlutterView? = null
+  private var platformPlugin:PlatformPlugin? = null
+
   var isAttachedToFlutterEngine = false
-    private set
 
   init {
     this.fragment = fragment
@@ -54,6 +55,9 @@ internal class HybridFlutterFragmentDelegate(fragment: FlutterFragment) : Exclus
     if (flutterView != null) {
       flutterView!!.attachToFlutterEngine(flutterEngine!!)
     }
+    // Here create FlutterPlugin to reset PlatformChannel
+    // as reason in HybridFlutterFragment#providePlatformPlugin
+    platformPlugin = PlatformPlugin(appComponent, flutterEngine!!.platformChannel, fragment)
   }
 
   fun onAttach(context: Context) {
@@ -67,10 +71,21 @@ internal class HybridFlutterFragmentDelegate(fragment: FlutterFragment) : Exclus
   fun onDetach() {
     if (isAttachedToFlutterEngine) {
       flutterEngine!!.activityControlSurface.detachFromActivity()
+      platformPlugin?.destroy()
     }
     fragment = null
     flutterEngine = null
     flutterView = null
+    platformPlugin = null
+  }
+
+  /**
+   * Keep same with FlutterActivityAndFragmentDelegate
+   */
+  fun updateSystemUiOverlays() {
+    if (platformPlugin != null) {
+      platformPlugin!!.updateSystemUiOverlays()
+    }
   }
 
   override fun detachFromFlutterEngine() {
@@ -79,6 +94,8 @@ internal class HybridFlutterFragmentDelegate(fragment: FlutterFragment) : Exclus
     // We should detach this FlutterView from FlutterEngine
     // to avoid some plugins（like TextInputPlugin） losing channels.
     flutterView?.detachFromFlutterEngine()
+    platformPlugin?.destroy()
+    platformPlugin = null
   }
 
   override fun getAppComponent(): Activity {

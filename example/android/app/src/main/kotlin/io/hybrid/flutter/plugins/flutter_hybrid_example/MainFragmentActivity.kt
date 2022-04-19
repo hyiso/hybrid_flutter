@@ -25,12 +25,12 @@ class MainFragmentActivity : FragmentActivity() {
   }
 
   private fun setupFragment() {
-    var route = "/home"
+    var route = "/"
     var params: MutableMap<String, String> = mutableMapOf()
     var useNewEngine = false
     val bundle = intent.extras
     if (bundle != null) {
-      route = bundle.getString(KEY_ROUTE, "/home")
+      route = bundle.getString(KEY_ROUTE, "/")
       useNewEngine = "1" == intent.getStringExtra(KEY_USE_NEW_ENGINE)
       bundle.remove(KEY_ROUTE)
       bundle.remove(KEY_USE_NEW_ENGINE)

@@ -8,6 +8,7 @@ class MainActivity: Activity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val intent = Intent(this, MainFragmentActivity::class.java)
+    intent.putExtra(MainFragmentActivity.KEY_ROUTE, "/home")
     startActivity(intent)
     finish()
   }

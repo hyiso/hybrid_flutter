@@ -1,7 +1,6 @@
 package io.hybrid.flutter.plugins.hybrid_flutter_example
 
 import android.net.Uri
-import android.util.Log
 import io.flutter.embedding.android.FlutterFragment
 import io.hybrid.flutter.plugins.hybrid_flutter.HybridFlutterFragment
 
@@ -18,7 +17,6 @@ fun FlutterFragment.NewEngineFragmentBuilder.initialRoute(
   route:String?,
   params: Map<String, String>?
 ): FlutterFragment.NewEngineFragmentBuilder {
-  Log.v("MainFlutterFragment", "route: $route, params: $params")
   if (route == null || route.isEmpty()) {
     return this
   }

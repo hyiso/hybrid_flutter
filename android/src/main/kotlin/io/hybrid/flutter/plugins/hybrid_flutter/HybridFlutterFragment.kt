@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.platform.PlatformPlugin
 
 
 open class HybridFlutterFragment : FlutterFragment() {
@@ -54,6 +55,11 @@ open class HybridFlutterFragment : FlutterFragment() {
   override fun onResume() {
     super.onResume()
     updateHybridAppLifecycleState(HybridFlutterPlugin.LIFECYCLE_RESUMED)
+  }
+
+  override fun onPostResume() {
+    super.onPostResume()
+    delegate.updateSystemUiOverlays()
   }
 
   override fun onPause() {
@@ -143,6 +149,26 @@ open class HybridFlutterFragment : FlutterFragment() {
 
   override fun shouldDestroyEngineWithHost(): Boolean {
     return shouldUseNewEngine()
+  }
+
+  override fun updateSystemUiOverlays() {
+    super.updateSystemUiOverlays()
+    delegate.updateSystemUiOverlays()
+  }
+
+  /**
+   * As FlutterActivityAndFragmentDelegate#onDetach will destroy PlatformPlugin,
+   * which will set PlatformChannel.platformMessageHandler to null,
+   * thus PlatformChannel will not work.
+   */
+  override fun providePlatformPlugin(
+    activity: Activity?,
+    flutterEngine: FlutterEngine
+  ): PlatformPlugin? {
+    if (!shouldUseNewEngine()) {
+      return null
+    }
+    return super.providePlatformPlugin(activity, flutterEngine)
   }
 
   override fun provideFlutterEngine(context: Context): FlutterEngine? {
