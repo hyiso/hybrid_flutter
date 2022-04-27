@@ -72,6 +72,9 @@
 }
 
 - (void)updateHybridAppLifecycleState:(nonnull NSString*)state {
+  if (!self.engine || !self.engine.isolateId) {
+    return;
+  }
   if (self.engine.viewController != self) {
     return;
   }
