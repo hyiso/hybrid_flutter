@@ -100,10 +100,11 @@ NSString* const FlutterEngineWillDealloc = @"FlutterEngineWillDealloc";
 - (FlutterEngine *)shareEngine:(nullable FlutterDartProject *)project {
   [self createRootEngine:project];
   ++_shareCount;
+  _rootEngine.viewController = nil;
   return _rootEngine;
 }
 
-- (void)releaseShareEngine {
+- (void)releaseSharedEngine {
   --_shareCount;
   if (_shareCount < 0) {
     _shareCount = 0;

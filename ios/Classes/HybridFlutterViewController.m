@@ -81,14 +81,30 @@
   }
 }
 
+- (void)willMoveToParentViewController:(UIViewController *)parent {
+  [super willMoveToParentViewController:parent];
+  if (!parent) {
+    if ([self shouldSnapshotForLeaving]) {
+      UIView *snapShotView = [self.view snapshotViewAfterScreenUpdates:YES];
+      snapShotView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, snapShotView.frame.size.width, snapShotView.frame.size.height);
+      [self.view.superview addSubview:snapShotView];
+      [[HybridFlutterManager sharedInstance] removeRoute:@(self.routeId)];
+    }
+  }
+}
+
 - (void)dealloc {
   [[HybridFlutterManager sharedInstance] removeRoute:@(self.routeId)];
   if (!self.shouldUseNewEngine) {
-    [[HybridFlutterManager sharedInstance] releaseShareEngine];
+    [[HybridFlutterManager sharedInstance] releaseSharedEngine];
   }
 }
 
 - (BOOL)shouldUseNewEngine {
+  return NO;
+}
+
+- (BOOL)shouldSnapshotForLeaving {
   return NO;
 }
 

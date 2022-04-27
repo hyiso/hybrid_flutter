@@ -2,6 +2,8 @@
 
 @interface HybridFlutterViewController : FlutterViewController
 
-- (BOOL)shouldUseNewEngine;
+-(BOOL)shouldUseNewEngine;
+
+-(BOOL)shouldSnapshotForLeaving;
 
 @end

@@ -21,6 +21,6 @@
 
 -(void)removeRoute:(NSNumber*)routeId;
 
--(void)releaseShareEngine;
+-(void)releaseSharedEngine;
 
 @end
