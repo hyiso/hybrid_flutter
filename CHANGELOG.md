@@ -1,3 +1,8 @@
+## 0.1.2
+
+* Fix: iOS LifecycleChannel sendMessage before engine run.
+* Feature: iOS support `shouldSnapshotForLeaving`
+
 ## 0.1.1
 
 * Fix: Android PlatformPlugin destroy bug in share mode
