@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HybridRoute<T> extends PageRoute<T> with HybridRouteMixin<T> {
   HybridRoute({
@@ -30,7 +29,7 @@ class HybridRoute<T> extends PageRoute<T> with HybridRouteMixin<T> {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
     Animation<double> secondaryAnimation, Widget child) {
-     return builder(context);
+     return child;
   }
 
   @override

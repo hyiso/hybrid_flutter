@@ -68,6 +68,7 @@ class _MyAppState extends State<MyApp> {
   }
   
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    print('[Example] onGenerateRoute: $settings');
     String? routeName = settings.name;
     Object? arguments = settings.arguments;
     final Uri? uri = Uri.tryParse(routeName ?? '/');
@@ -81,7 +82,10 @@ class _MyAppState extends State<MyApp> {
     );
     return MyRoute(
       settings: newSettings,
-      builder: pages[newSettings.name] ?? (ctx) => Container(color: Colors.red)
+      builder: (context) {
+        print('[Example] call page builder');
+        return (pages[newSettings.name] ?? (ctx) => Container(color: Colors.red)).call(context);
+      }
     );
   }
 }

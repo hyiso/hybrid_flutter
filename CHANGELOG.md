@@ -1,3 +1,6 @@
+## 0.1.3
+
+* Fix: `HybridRoute.buildTransitions` call `builder` again.
 ## 0.1.2
 
 * Fix: iOS LifecycleChannel sendMessage before engine run.

@@ -519,7 +519,6 @@ class _HybridAppState extends State<HybridApp> with WidgetsBindingObserver {
   }
   
   Future<bool> handleRemoveRoute(int routeId) async {
-    print('handleRemoveRoute: $routeId');
     final NavigatorState? navigator = _navigator?.currentState;
     if (navigator == null) {
       return false;
@@ -536,7 +535,6 @@ class _HybridAppState extends State<HybridApp> with WidgetsBindingObserver {
   }
 
   Future<bool> handleNewRoute(Map routeParams) async {
-    print('handleNewRoute: $routeParams');
     final NavigatorState? navigator = _navigator?.currentState;
     if (navigator == null) {
       _pendingNewRoutes.add(routeParams);
