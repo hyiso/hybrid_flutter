@@ -1,4 +1,4 @@
-group 'io.hybrid.flutter.plugins.hybrid_flutter'
+group 'com.hyiso.flutter.plugins.hybrid_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {

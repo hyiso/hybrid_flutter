@@ -1,4 +1,4 @@
-package io.hybrid.flutter.plugins.hybrid_flutter
+package com.hyiso.flutter.plugins.hybrid_flutter
 
 import android.app.Activity
 import android.content.Context

@@ -1,3 +1,8 @@
+## 0.2.0
+
+* Change Android package name.
+* Add @try...@catch when send message to channel in iOS.
+
 ## 0.1.3
 
 * Fix: `HybridRoute.buildTransitions` call `builder` again.

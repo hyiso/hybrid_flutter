@@ -1,10 +1,10 @@
-package io.hybrid.flutter.plugins.hybrid_flutter_example
+package com.hyiso.flutter.plugins.hybrid_flutter_example
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import io.flutter.embedding.android.FlutterFragment
-import io.hybrid.flutter.plugins.hybrid_flutter.HybridFlutterManager
+import com.hyiso.flutter.plugins.hybrid_flutter.HybridFlutterManager
 
 class MainFragmentActivity : FragmentActivity() {
   companion object {

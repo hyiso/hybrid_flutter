@@ -61,22 +61,34 @@
 
 - (void)sendLifecycleMessage:(id)message {
   if (_lifecycleChannel) {
-    [_lifecycleChannel sendMessage:message];
+    @try {
+      [_lifecycleChannel sendMessage:message];
+    } @catch (NSException *exception) {
+    } @finally {
+    };
   }
 }
 
 - (void)newRoute:(NSString *)route routeId:(NSNumber *)routeId {
   if (_navigationChannel) {
-    [_navigationChannel invokeMethod:@"newRoute" arguments:@{
-      @"routeId": routeId,
-      @"route": route
-    }];
+    @try {
+      [_navigationChannel invokeMethod:@"newRoute" arguments:@{
+        @"routeId": routeId,
+        @"route": route
+      }];
+    } @catch (NSException *exception) {
+    } @finally {
+    };
   }
 }
 
 - (void)removeRoute:(NSNumber *)routeId {
   if (_navigationChannel) {
-    [_navigationChannel invokeMethod:@"removeRoute" arguments:routeId];
+    @try {
+      [_navigationChannel invokeMethod:@"removeRoute" arguments:routeId];
+    } @catch (NSException *exception) {
+    } @finally {
+    };
   }
 }
 
