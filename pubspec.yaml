@@ -1,6 +1,6 @@
 name: hybrid_flutter
 description: Flutter Hybrid Stack Manager.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/hyiso/hybrid_flutter
 
 environment:

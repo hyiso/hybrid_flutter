@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Compatible with Flutter 3.x
+
 ## 0.2.0
 
 * Change Android package name.

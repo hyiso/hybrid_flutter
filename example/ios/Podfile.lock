@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - hybrid_flutter (0.1.1):
+  - hybrid_flutter (0.1.2):
     - Flutter
 
 DEPENDENCIES:
@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/hybrid_flutter/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  hybrid_flutter: 0cf46a6bd88fc830d1dd3208d46ee73a1851c6a7
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  hybrid_flutter: 9d6aaac5b0b234db0b226fc1b725edd286a8ec31
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

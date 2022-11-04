@@ -57,7 +57,7 @@ internal class HybridFlutterFragmentDelegate(fragment: FlutterFragment) : Exclus
     }
     // Here create FlutterPlugin to reset PlatformChannel
     // as reason in HybridFlutterFragment#providePlatformPlugin
-    platformPlugin = PlatformPlugin(appComponent, flutterEngine!!.platformChannel, fragment)
+    platformPlugin = PlatformPlugin(appComponent, flutterEngine!!.platformChannel, fragment!!)
   }
 
   fun onAttach(context: Context) {

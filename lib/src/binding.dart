@@ -22,10 +22,7 @@ class HybridWidgetsBinding extends BindingBase with GestureBinding, SchedulerBin
   /// binding instance to a [TestWidgetsFlutterBinding], not a
   /// [WidgetsFlutterBinding].
   static WidgetsBinding ensureInitialized() {
-    if (WidgetsBinding.instance == null) {
-      HybridWidgetsBinding();
-    }
-    return WidgetsBinding.instance!;
+    return HybridWidgetsBinding();
   }
 
   @override
@@ -36,7 +33,7 @@ class HybridWidgetsBinding extends BindingBase with GestureBinding, SchedulerBin
   }
 
   Future<String?> _handleHybridLifecycleMessage(String? message) async {
-    print('_handleHybridLifecycleMessage: $message');
+    debugPrint('_handleHybridLifecycleMessage: $message');
     handleAppLifecycleStateChanged(_parseHybridAppLifecycleMessage(message!)!);
     return null;
   }
